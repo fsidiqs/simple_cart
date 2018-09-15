@@ -47,7 +47,7 @@ include (app_path("Classes/SetupPromoCodes.php"));
                 <input type="submit" value="Calculate">
             </form>
 
-            <table class="table">
+          		   <table class="table">
                 <thead>
                     <tr>
                     <th colspan="3">Result</th>
@@ -63,7 +63,7 @@ include (app_path("Classes/SetupPromoCodes.php"));
                     </tr>
                     <tr>
                     <th scope="row">Discount</th>
-                    <td><br>{{($promo_code)!=false ? 'Promo Code: '.$promo_code : false}} ( {{isset($discountRate) ?  $discountRate*100 . "%" : ""}})</td>
+                    <td><br>{{isset($promo_code) ? 'Promo Code: '.$promo_code : false}} ( {{isset($discountRate) ?  $discountRate*100 . "%" : ""}})</td>
                     <td align="right">Rp. {{isset($discount) ?  number_format($discount,2,",","."): "0"}}</td>
                     </tr>
                     <tr class="table-success">
