@@ -26,7 +26,7 @@ include (app_path("Classes/SetupPromoCodes.php"));
 </head>
 <body>
     <div class="row container-fluid">
-        <div class="col-4">
+        <div class="col-6">
             <form method="POST" action="{{url('/store')}}">
             <input name="_token" type="hidden" value="{{ csrf_token() }}"/>
                 <div class="form-group">
@@ -74,6 +74,18 @@ include (app_path("Classes/SetupPromoCodes.php"));
                 </tbody>
             </table>
 
+        </div>
+        <div class="col-6">
+            <div class="card">
+            <div class="card-header">
+            Kode Promo
+            </div>
+            <div class="card-body">
+            <p class="card-text">newyear : Diskon 5%</p>
+            <p class="card-text">lebaran : Diskon 10%</p>
+            <p class="card-text">harbolnas: Diskon 20%</p>
+            </div>
+            </div>
         </div>
     </div>
 </body>
