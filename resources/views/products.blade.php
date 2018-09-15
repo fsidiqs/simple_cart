@@ -1,4 +1,7 @@
+<?php
+include (app_path("Classes/SetupPromoCodes.php"));
 
+?>
 </<!DOCTYPE html>
 <html>
 <head>
@@ -24,7 +27,8 @@
 <body>
     <div class="row container-fluid">
         <div class="col-4">
-            <form>
+            <form method="POST" action="{{url('/store')}}">
+            <input name="_token" type="hidden" value="{{ csrf_token() }}"/>
                 <div class="form-group">
                     <label for="amount">Amount</label>
                     <div class="input-group">
@@ -37,33 +41,35 @@
                 <div class="form-group">
                     <label for="amount">Kode Promo</label>
                     <div class="input-group">
-                        <input name="amount" type="text" class="form-control">
+                        <input name="promo_code" type="text" class="form-control">
                     </div>
                 </div>
-                <input type="submit" value="Proceed">
+                <input type="submit" value="Calculate">
             </form>
 
             <table class="table">
                 <thead>
                     <tr>
-                    <th colspan="3">Pembayaran</th>
+                    <th colspan="3">Result</th>
                     </tr>
                 </thead>
                 <tbody>
+
+
                     <tr>
                     <th scope="row">Price</th>
-                    <td>Mark</td>
-                    <td align="right">1111</td>
+                    <td></td>
+                    <td align="right">Rp. {{isset($price) ?  number_format($price,2,",","."): "0"}}</td>
                     </tr>
                     <tr>
                     <th scope="row">Discount</th>
-                    <td>Mark</td>
-                    <td align="right">Rp.1111</td>
+                    <td><br>{{($promo_code)!=false ? 'Promo Code: '.$promo_code : false}} ( {{isset($discountRate) ?  $discountRate*100 . "%" : ""}})</td>
+                    <td align="right">Rp. {{isset($discount) ?  number_format($discount,2,",","."): "0"}}</td>
                     </tr>
                     <tr class="table-success">
                     <th scope="row">Total</th>
                     <td></td>
-                    <td align="right">1111</td>
+                    <td align="right">Rp. {{isset($discount) ?  number_format($total,2,",","."): "0"}}</td>
                     </tr>
                 </tbody>
             </table>
